@@ -8,15 +8,7 @@
 #      bash <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/verbose_logging.sh)
 
 # Make SSD read/write if it's not
-sudo touch /root-is-readwrite &> /dev/null
-if [ ! -f /root-is-readwrite ]
-then
-  echo "Making root filesystem read/write..."
-  echo
-  bash <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/enable_rw_ssd.sh)
-else
-  echo "Root filesystem is already read/write"
-fi
+bash <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/enable_rw_ssd.sh)
 
 echo "--log-net-log=/tmp/netlog" >> /etc/chrome_dev.conf
 echo "--net-log-level=0" >> /etc/chrome_dev.conf
