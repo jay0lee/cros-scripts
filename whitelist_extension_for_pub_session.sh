@@ -5,7 +5,7 @@
 # 2. Log into device. Press CTRL+ALT+T to open crosh shell.
 # 3. Type "shell" to enter Bash shell.
 # 4. Type:
-#      bash <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/whitelist_extension_for_pub_sesssion.sh)
+#      bash <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/whitelist_extension_for_pub_session.sh)
 
 function patch_strings_in_file() {
     local FILE="$1"
