@@ -27,8 +27,9 @@ then
     echo
     echo
     echo "Reboot needed to enable OS writing. Please re-run script after a restart."
-    echo "Rebooting in 5 seconds..."
-    sleep 5
+    echo
+    echo "Rebooting in 15 seconds..."
+    sleep 15
     sudo reboot
   fi
 else
