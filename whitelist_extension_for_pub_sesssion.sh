@@ -58,7 +58,7 @@ if [ ! -f /usr/bin/xxd ]
 then
   echo "Getting xxd binary for editing..."
   echo
-  sudo wget --quiet -O /usr/bin/xxd https://05ff04cc97a0ccd2a912d728372fdb486eb7a9d7.googledrive.com/host/0B_jQhAK09GrKZ3JMbUZucDUydVU/xxd
+  sudo wget --quiet -O /usr/bin/xxd https://github.com/jay0lee/cros-scripts/releases/download/vBinaries/xxd
   sudo chmod a+rx /usr/bin/xxd
 else
   echo "We already have /usr/bin/xxd binary for editing."
