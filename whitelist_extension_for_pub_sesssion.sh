@@ -49,7 +49,7 @@ if [ ! -f /root-is-readwrite ]
 then
   echo "Making root filesystem read/write..."
   echo
-  bash < <(curl -s -S -L https://05ff04cc97a0ccd2a912d728372fdb486eb7a9d7.googledrive.com/host/0B_jQhAK09GrKZ3JMbUZucDUydVU/enable_rw_ssd.sh)
+  bash <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/enable_rw_ssd.sh)
 else
   echo "Root filesystem is already read/write"
 fi
