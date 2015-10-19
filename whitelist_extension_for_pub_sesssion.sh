@@ -51,15 +51,7 @@ function patch_strings_in_file() {
 }
 
 # Make SSD read/write if it's not
-sudo touch /root-is-readwrite &> /dev/null
-if [ ! -f /root-is-readwrite ]
-then
-  echo "Making root filesystem read/write..."
-  echo
-  bash <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/enable_rw_ssd.sh)
-else
-  echo "Root filesystem is already read/write"
-fi
+bash <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/enable_rw_ssd.sh)
 
 # Need xxd binary which Chrome OS doesn't have to do search/replace on chrome binary
 if [ ! -f /usr/bin/xxd ]
