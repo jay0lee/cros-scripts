@@ -11,19 +11,15 @@
 sudo touch /root-is-readwrite &> /dev/null
 if [ ! -f /root-is-readwrite ]
 then
-  while :
-    do
-      read -p "Modifying OS. USB Recovery will be needed to get out of developer mode. Are you sure you want to do this? (y/N): " is_user_sure
-      is_user_sure=${is_user_sure:0:1}
-      is_user_sure=${is_user_sure,,}
-      if [ ${is_user_sure} = "y" ]
-      then
-        break
-      else
-        echo "Come back when you're sure..."
-        exit
-      fi
-    done
+  read -p "Modifying OS. USB Recovery will be needed to get out of developer mode. Are you sure you want to do this? (y/N): " is_user_sure
+  is_user_sure=${is_user_sure:0:1}
+  is_user_sure=${is_user_sure,,}
+  if [ ! ${is_user_sure} = "y" ]
+  then
+    echo "Come back when you're sure..."
+    exit
+  fi
+  
   sudo /usr/share/vboot/bin/make_dev_ssd.sh --remove_rootfs_verification --partitions "2 4"
   sudo mount -o remount,rw /
   if [ $? -ne 0 ]; then
