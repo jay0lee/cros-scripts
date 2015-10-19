@@ -8,7 +8,7 @@
 #      bash <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/verbose_logging.sh)
 
 # Make SSD read/write if it's not
-bash <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/enable_rw_ssd.sh)
+source <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/enable_rw_ssd.sh)
 
 echo "--log-net-log=/tmp/netlog" >> /etc/chrome_dev.conf
 echo "--net-log-level=0" >> /etc/chrome_dev.conf
