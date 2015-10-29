@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Enable RW SSD - Turns off root filesystem verification and puts root partition of Chromebook into RW mode.
+# Be aware that Chrome OS updates may overwrite your changes.
 
 # Run this script on a Chromebook:
 # 1. Put Chromebook in developer mode - https://www.chromium.org/chromium-os/poking-around-your-chrome-os-device
