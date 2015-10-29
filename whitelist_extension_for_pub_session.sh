@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Whitelist extensions for public session - modifies the Chrome binary executable replacing an existing
+# extension in the whitelist with your own for testing.
+
 # Run this script on a Chromebook:
 # 1. Put Chromebook in developer mode - https://www.chromium.org/chromium-os/poking-around-your-chrome-os-device
 # 2. Log into device. Press CTRL+ALT+T to open crosh shell.
