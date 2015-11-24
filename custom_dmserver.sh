@@ -18,9 +18,8 @@ sudo bash -c 'echo "--disable-policy-key-verification" >> /etc/chrome_dev.conf'
 sudo bash -c 'echo "--enterprise-enrollment-skip-robot-auth" >> /etc/chrome_dev.conf'
 sudo bash -c "echo $url_line >> /etc/chrome_dev.conf"
 echo
-restart ui
 echo "Switched policy to pull from:"
 echo
 echo $policy_url
 echo
-echo "you can now switch back to UI to test custom policy.""
+echo "reboot to pull and apply new custom policy"
