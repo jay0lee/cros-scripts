@@ -23,4 +23,4 @@ echo "Switched policy to pull from:"
 echo
 echo $custom_url
 echo
-echo you can now switch back to UI to test custom policy.
+echo "you can now switch back to UI to test custom policy.""
