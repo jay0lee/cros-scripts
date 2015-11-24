@@ -13,14 +13,14 @@
 source <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/enable_rw_ssd.sh)
 
 read -p "Which URL do you wish to use for custom policy?: " policy_url
-
+url_line="--device-management-url=$policy_url"
 sudo bash -c 'echo "--disable-policy-key-verification" >> /etc/chrome_dev.conf'
 sudo bash -c 'echo "--enterprise-enrollment-skip-robot-auth" >> /etc/chrome_dev.conf'
-sudo bash -c 'echo "--device-management-url=$policy_url" >> /etc/chrome_dev.conf'
+sudo bash -c "echo $url_line >> /etc/chrome_dev.conf"
 echo
-restart-ui
+restart ui
 echo "Switched policy to pull from:"
 echo
-echo $custom_url
+echo $policy_url
 echo
 echo "you can now switch back to UI to test custom policy.""
