@@ -9,6 +9,9 @@
 # 4. Type:
 #      bash <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/custom_dmserver.sh)
 
+# Disable updates
+source <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/disable_cros_updates.sh)
+
 # Make SSD read/write if it's not
 source <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/enable_rw_ssd.sh)
 
