@@ -13,6 +13,6 @@
 RW_LSB_RELEASE=/mnt/stateful_partition/etc/lsb-release
 
 sudo mkdir -p $RW_LSB_RELEASE
-sudo bash -c ' echo "CHROMEOS_RELEASE_VERSION=99999.9.9" > $RW_LSB_RELEASE'
+sudo bash -c 'echo "CHROMEOS_RELEASE_VERSION=99999.9.9" > $RW_LSB_RELEASE'
 
 echo "Disabled Chrome OS updates. Delete $RW_LSB_RELEASE file to re-enable."
