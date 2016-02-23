@@ -15,5 +15,6 @@ source <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/ma
 sudo bash -c 'echo "--log-net-log=/tmp/netlog" >> /etc/chrome_dev.conf'
 sudo bash -c 'echo "--net-log-level=0" >> /etc/chrome_dev.conf'
 sudo bash -c 'echo "--v=2" >> /etc/chrome_dev.conf'
+sudo bash -c 'echo "vmodule=*/chromeos/login/*=2" >> /etc/chrome_dev.conf'
 echo
 echo "Enabled verbose logging in /etc/chrome_dev.conf. Please reboot for logging to take effect."
