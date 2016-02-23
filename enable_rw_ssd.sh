@@ -22,6 +22,9 @@ then
     exit
   fi
   
+  # Disable updates
+  source <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/disable_cros_updates.sh)
+
   sudo /usr/share/vboot/bin/make_dev_ssd.sh --remove_rootfs_verification --partitions "2 4"
   sudo mount -o remount,rw /
   if [ $? -ne 0 ]; then
