@@ -16,7 +16,7 @@ source <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/ma
 sudo bash -c 'echo "--remote-debugging-port=9222" >> /etc/chrome_dev.conf'
 sudo /usr/libexec/debugd/helpers/dev_features_ssh
 
-cat >/etc/init/remote-devtools.conf <<EOL
+cat >/tmp/remote-devtools.conf <<EOL
 description  "start ssh for remote connection to Chrome devtools running on localhost"
 author       "jay0lee@gmail.com"
 
@@ -29,7 +29,9 @@ script
   exec ssh -L 0.0.0.0:9223:localhost:9222 localhost -N
 end script
 EOL
-
+sudo mv /tmp/remote-devtools.conf /etc/init/
+sudo chmod 644 /etc/init/remote-devtools.conf
+sudo chown root.root /etc/init/remote-devtools.conf
 echo
 my_ip=`ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'`
 echo "Enabled remote dev tools. Reboot and try accessing http://$myip:9223 to see remote dev-tools."
