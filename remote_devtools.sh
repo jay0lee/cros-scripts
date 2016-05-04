@@ -24,6 +24,16 @@ start on started openssh-server
 stop on stopping openssh-server
 respawn
 
+pre-start script
+  iptables -A INPUT -p tcp --dport 9223 -j ACCEPT -w
+  ip6tables -A INPUT -p tcp --dport 9223 -j ACCEPT -w
+end script
+
+post-stop script
+  iptables -D INPUT -p tcp --dport 9223 -j ACCEPT -w
+  ip6tables -D INPUT -p tcp --dport 9223 -j ACCEPT -w
+end script
+
 expect fork
 script
   exec ssh -oStrictHostKeyChecking=no -L 0.0.0.0:9223:localhost:9222 localhost -N
