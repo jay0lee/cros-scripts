@@ -26,7 +26,7 @@ respawn
 
 expect fork
 script
-  exec ssh -L 0.0.0.0:9223:localhost:9222 localhost -N
+  exec ssh -oStrictHostKeyChecking=no -L 0.0.0.0:9223:localhost:9222 localhost -N
 end script
 EOL
 sudo mv /tmp/remote-devtools.conf /etc/init/
