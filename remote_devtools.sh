@@ -33,5 +33,5 @@ sudo mv /tmp/remote-devtools.conf /etc/init/
 sudo chmod 644 /etc/init/remote-devtools.conf
 sudo chown root.root /etc/init/remote-devtools.conf
 echo
-my_ip=`ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'`
+myip=`ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'`
 echo "Enabled remote dev tools. Reboot and try accessing http://$myip:9223 to see remote dev-tools."
