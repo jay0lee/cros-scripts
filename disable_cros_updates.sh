@@ -10,10 +10,7 @@
 # 4. Type:
 #      bash <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/disable_cros_updates.sh)
 
-ETC_DIR=/mnt/stateful_partition/etc
-LSB_RELEASE=$ETC_DIR/lsb-release
+sudo mkdir -p /mnt/stateful_partition/etc
+sudo bash -c 'echo "CHROMEOS_RELEASE_VERSION=99999.9.9" > /mnt/stateful_partition/etc/lsb-release'
 
-sudo mkdir -p $ETC_DIR
-sudo bash -c 'echo "CHROMEOS_RELEASE_VERSION=99999.9.9" > $LSB_RELEASE'
-
-echo "Disabled Chrome OS updates. Delete $LSB_RELEASE file to re-enable."
+echo "Disabled Chrome OS updates. Delete /mnt/stateful_partition/etc/lsb-release file to re-enable."
