@@ -31,4 +31,4 @@ echo
 echo
 echo "User PSKs:"
 sudo 'bash -c "cat /home/root/*/session_manager/policy/policy"' \
-| grep -a -E '\"Passphrase\":|\"SSID\":'"
+| grep -a -E '\"Passphrase\":|\"SSID\":'
