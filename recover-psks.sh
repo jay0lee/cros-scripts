@@ -16,7 +16,7 @@ do
   then
     rotted=${line:6}
     unrotted=`echo $rotted | tr '!-~' 'P-~!-O'`
-    echo " PSK:  $unrotted"
+    echo " PSK:  $unrotted rooted: $rotted unrotted: $unrotted"
   else
     echo "SSID: $line"
   fi
