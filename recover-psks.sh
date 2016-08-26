@@ -13,10 +13,9 @@ echo "Device PSKs:"
 sudo cat /var/cache/shill/default.profile | grep -E 'Name=|Passphrase=' | cut -d "=" -f 2- | while read line
 do
   if [[ "$line" == "rot47"* ]]; then
-    echo "psk"
-    #rotted=${line:6}
-    #unrotted=`echo $rotted | tr '!-~' 'P-~!-O'`
-    #echo " PSK:  $unrotted rooted: $rotted unrotted: $unrotted"
+    rotted=${line:6}
+    unrotted=`echo $rotted | tr '!-~' 'P-~!-O'`
+    echo " PSK:  $unrotted rooted: $rotted unrotted: $unrotted"
   else
     echo "SSID: $line"
   fi
