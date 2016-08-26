@@ -12,7 +12,7 @@
 echo "Device PSKs:"
 sudo cat /var/cache/shill/default.profile | grep -E '^Name=|^Passphrase=' | cut -d "=" -f 2- | while read line
 do
-  if [[ "$line" == "Name=default" ]]; then
+  if [[ "$line" == "default" ]]; then
     continue
   fi
   if [[ "$line" == "rot47"* ]]; then
