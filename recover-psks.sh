@@ -14,9 +14,10 @@ sudo cat /var/cache/shill/default.profile | grep -E 'Name=|Profile=' | cut -d "=
 do
   if [[ $line == "rot47:*" ]]
   then
-    rotted=${line:6}
-    unrotted=`echo $rotted | tr '!-~' 'P-~!-O'`
-    echo " PSK:  $unrotted rooted: $rotted unrotted: $unrotted"
+    echo "psk"
+    #rotted=${line:6}
+    #unrotted=`echo $rotted | tr '!-~' 'P-~!-O'`
+    #echo " PSK:  $unrotted rooted: $rotted unrotted: $unrotted"
   else
     echo "SSID: $line"
   fi
