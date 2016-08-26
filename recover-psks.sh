@@ -12,7 +12,7 @@
 echo "Device PSKs:"
 sudo cat /var/cache/shill/default.profile | grep -E 'Name=|Profile=' | cut -d "=" -f 2- | while read line
 do
-  if [[ $line == "rot47:*" ]]
+  if [[ $line == "rot47*" ]]
   then
     echo "psk"
     #rotted=${line:6}
