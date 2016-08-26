@@ -10,8 +10,11 @@
 #      bash <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/recover-psks.sh)
 
 echo "Device PSKs:"
-sudo cat /var/cache/shill/default.profile | grep -E 'Name=|Passphrase=' | cut -d "=" -f 2- | while read line
+sudo cat /var/cache/shill/default.profile | grep -E '^Name=|^Passphrase=' | cut -d "=" -f 2- | while read line
 do
+  if [[ "$line" == "Name=default" ]]; then
+    continue
+  fi
   if [[ "$line" == "rot47"* ]]; then
     rotted=${line:6}
     unrotted=`echo $rotted | tr '!-~' 'P-~!-O'`
