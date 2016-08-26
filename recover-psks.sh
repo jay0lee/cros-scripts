@@ -27,4 +27,4 @@ done
 echo
 echo
 echo "User PSKs:"
-
+sudo cat /home/root/*/session_manager/policy/policy | grep -a -E '\"Passphrase\":|\"SSID\":'
