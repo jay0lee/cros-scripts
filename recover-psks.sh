@@ -15,8 +15,13 @@ do
   if [[ "$line" == "rot47"* ]]; then
     rotted=${line:6}
     unrotted=`echo $rotted | tr '!-~' 'P-~!-O'`
-    echo " PSK:  $unrotted rooted: $rotted unrotted: $unrotted"
+    echo " PSK:  $unrotted"
+    echo
   else
     echo "SSID: $line"
   fi
 done
+echo
+echo
+echo "User PSKs:"
+
