@@ -12,7 +12,6 @@
 echo "Device PSKs:"
 sudo cat /var/cache/shill/default.profile | grep -E 'Name=|Passphrase=' | cut -d "=" -f 2- | while read line
 do
-  echo "\"$line\""
   if [[ $line == "rot47*" ]]
   then
     echo "psk"
