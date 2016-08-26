@@ -10,7 +10,7 @@
 #      bash <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/recover-psks.sh)
 
 echo "Device PSKs:"
-sudo cat /var/cache/shill/default.profile | grep -E 'Name=|Profile=' | cut -d "=" -f 2- | while read line
+sudo cat /var/cache/shill/default.profile | grep -E 'Name=|Passphrase=' | cut -d "=" -f 2- | while read line
 do
   echo "\"$line\""
   if [[ $line == "rot47*" ]]
