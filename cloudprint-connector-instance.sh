@@ -25,6 +25,10 @@ then
   echo
   echo "Initializing connector..."
   gcp-connector-util init
+  echo
+  gcp_command="gcp-cups-connector --config-filename ~/gcp-cups-connector.config.json"
+  echo "Starting connector with $gcp_command"
+  $gcp_command
 fi
 EOT
 
