@@ -70,7 +70,7 @@ echo '<meta http-equiv="refresh" content="0; url=/pdfs" />' > /var/www/html/inde
 ln -s /var/spool/cups-pdf/ANONYMOUS/ /var/www/html/pdfs
 
 # Give jobs unique filenames
-echo "Label 2" >> /etc/cups/cups-pdf.conf
+echo "Label 1" >> /etc/cups/cups-pdf.conf
 
 # Reboot or restart services as required
 # so that upgrades and config changes are applied
