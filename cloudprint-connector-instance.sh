@@ -69,9 +69,14 @@ chmod a+rwx -R /usr/local/gam
 echo '<meta http-equiv="refresh" content="0; url=/pdfs" />' > /var/www/html/index.html
 ln -s /var/spool/cups-pdf/ANONYMOUS/ /var/www/html/pdfs
 
+# Give jobs unique filenames
+echo "Label 2" >> /etc/cups/cups-pdf.conf
+
 # Reboot or restart services as required
 # so that upgrades and config changes are applied
 if [ -a /var/run/reboot-required ]
 then
   reboot
+else
+  service cups restart
 fi
