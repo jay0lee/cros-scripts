@@ -28,8 +28,8 @@ then
   echo
   gcp_command="gcp-cups-connector --config-filename ~/gcp-cups-connector.config.json"
   touch ~/.first-login-script-ran
-  echo "Starting connector with $gcp_command"
-  $gcp_command
+  echo "Starting connector with \$gcp_command"
+  \$gcp_command
 fi
 EOT
 
