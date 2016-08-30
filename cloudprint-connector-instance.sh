@@ -39,14 +39,6 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get update
 #apt-get -y dist-upgrade
 
-# Create gcp user
-
-# Install Go
-curl -O https://storage.googleapis.com/golang/go1.7.linux-amd64.tar.gz
-tar xvf go1.7.linux-amd64.tar.gz
-chown -R root:root ./go
-mv go /usr/local
-
 # install the packages we need. For some reason it
 # fails every now and again so loop until success
 packages="whois build-essential libcups2-dev libavahi-client-dev git bzr cups cups-pdf"
@@ -57,6 +49,12 @@ do
   sleep 10
   apt-get update
 done
+
+# Install Go
+curl -O https://storage.googleapis.com/golang/go1.7.linux-amd64.tar.gz
+tar xvf go1.7.linux-amd64.tar.gz
+chown -R root:root ./go
+mv go /usr/local
 
 # Reboot or restart services as required
 # so that upgrades and config changes are applied
