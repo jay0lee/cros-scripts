@@ -24,7 +24,7 @@ then
   go get -v -u -ldflags "-X github.com/google/cups-connector/lib.BuildDate=\`date +%Y.%m.%d\`" github.com/google/cloud-print-connector/...
   echo
   echo "Initializing connector..."
-  gcp-connector-util init --log_level DEBUG
+  gcp-connector-util init --log-level DEBUG
   echo
   gcp_command="gcp-cups-connector --config-filename \${HOME}/gcp-cups-connector.config.json --log-to-console"
   touch ~/.first-login-script-ran
