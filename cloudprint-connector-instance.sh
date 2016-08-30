@@ -37,7 +37,7 @@ EOT
 # are up to date.
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
-apt-get -y dist-upgrade
+#apt-get -y dist-upgrade
 
 # Create gcp user
 
