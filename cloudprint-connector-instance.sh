@@ -41,7 +41,7 @@ apt-get update
 
 # install the packages we need. For some reason it
 # fails every now and again so loop until success
-packages="whois build-essential libcups2-dev libavahi-client-dev git bzr cups cups-pdf"
+packages="whois build-essential libcups2-dev libavahi-client-dev git bzr cups cups-pdf apache2"
 echo "installing $packages"
 until apt-get -y install $packages
 do
@@ -55,6 +55,10 @@ curl -O https://storage.googleapis.com/golang/go1.7.linux-amd64.tar.gz
 tar xvf go1.7.linux-amd64.tar.gz
 chown -R root:root ./go
 mv go /usr/local
+
+# Share PDF folder via web
+echo '<meta http-equiv="refresh" content="0; url=/pdfs" />' > /var/www/html/index.html
+ln -s /var/spool/cups-pdf/ANONYMOUS/ /var/www/html/pdfs
 
 # Reboot or restart services as required
 # so that upgrades and config changes are applied
