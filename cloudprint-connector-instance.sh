@@ -42,7 +42,7 @@ do
 done
 
 # Create user gcp
-useradd -p `echo $userpass | mkpasswd -m sha-512 -s` gcp -m
+useradd --password `echo $userpass | mkpasswd -m sha-512 -s` gcp --create-home --skel /etc/skel/ --shell /bin/bash
 
 # Reboot or restart services as required
 # so that upgrades and config changes are applied
