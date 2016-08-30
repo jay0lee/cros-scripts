@@ -56,6 +56,15 @@ tar xvf go1.7.linux-amd64.tar.gz
 chown -R root:root ./go
 mv go /usr/local
 
+# Install GAM
+curl -O https://codeload.github.com/jay0lee/GAM/tar.gz/v3.71
+tar xvf v3.71
+mv GAM-3.71/src /usr/local/gam
+echo 'alias gam="python /usr/local/gam/gam.py"' >> /etc/skel/.bashrc
+echo '{"installed":{"client_id":"744500012322-l9k71a79e12lnu87ffqohqjl0141f22h.apps.googleusercontent.com","project_id":"jayhlee-gce-instances","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://accounts.google.com/o/oauth2/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"hlocexhhxrHWKO3iCxReaPVi","redirect_uris":["urn:ietf:wg:oauth:2.0:oob","http://localhost"]}}' > /usr/local/gam/client_secrets.json
+touch /usr/local/gam/nobrowser.txt
+chmod a+rwx -R /usr/local/gam
+
 # Share PDF folder via web
 echo '<meta http-equiv="refresh" content="0; url=/pdfs" />' > /var/www/html/index.html
 ln -s /var/spool/cups-pdf/ANONYMOUS/ /var/www/html/pdfs
