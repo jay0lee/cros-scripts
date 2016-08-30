@@ -18,7 +18,7 @@ echo 'export GOPATH=$HOME/go' >> /etc/skel/.bashrc
 echo 'export PATH=$PATH:$GOROOT/bin:$GOPATH/bin' >> /etc/skel/.bashrc
 mkdir /etc/skel/go
 cat <<EOT >> /etc/skel/.profile
-if [ \`last $USER | wc -l\` -lt 2 ]
+if [ -a ~/.first-login-script-ran ]
 then
   echo "Installing GoLang GCP 2.0 Connector..."
   go get -v github.com/google/cloud-print-connector/...
@@ -27,6 +27,7 @@ then
   gcp-connector-util init
   echo
   gcp_command="gcp-cups-connector --config-filename ~/gcp-cups-connector.config.json"
+  touch ~/.first-login-script-ran
   echo "Starting connector with $gcp_command"
   $gcp_command
 fi
