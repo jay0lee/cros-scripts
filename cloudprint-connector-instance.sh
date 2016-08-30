@@ -11,7 +11,21 @@ else
 fi
 
 metadata_url="http://metadata.google.internal/computeMetadata/v1/instance/attributes/"
-userpass=`curl $metadata_url/userpass -H "Metadata-Flavor: Google"`
+
+# Config for new users
+echo 'export GOROOT=/usr/local/go' >> /etc/skel/.bashrc
+echo 'export GOPATH=$HOME/go' >> /etc/skel/.bashrc
+echo 'export PATH=$PATH:$GOROOT/bin:$GOPATH/bin' >> /etc/skel/.bashrc
+mkdir /etc/skel/go
+cat <<EOT >> /etc/skel/.profile
+if [ `last $USER | wc -l` -lt 2 ]
+then
+  echo "Installing GoLang GCP 2.0 Connector..."
+  go get -v github.com/google/cloud-print-connector
+  echo "Initializing connector..."
+  gcp-connector-util init
+fi
+EOT
 
 # start by making sure all installed packages
 # are up to date.
@@ -26,10 +40,6 @@ curl -O https://storage.googleapis.com/golang/go1.7.linux-amd64.tar.gz
 tar xvf go1.7.linux-amd64.tar.gz
 chown -R root:root ./go
 mv go /usr/local
-echo 'export GOROOT=/usr/local/go' >> /etc/skel/.bashrc
-echo 'export GOPATH=$HOME/go' >> /etc/skel/.bashrc
-echo 'export PATH=$PATH:$GOROOT/bin:$GOPATH/bin' >> /etc/skel/.bashrc
-mkdir /etc/skel/go
 
 # install the packages we need. For some reason it
 # fails every now and again so loop until success
@@ -41,15 +51,6 @@ do
   sleep 10
   apt-get update
 done
-cat <<EOT >> /etc/skel/.profile
-if [ `last $USER | wc -l` -lt 2 ]
-then
-  echo "Installing GoLang GCP 2.0 Connector..."
-  go get -v github.com/google/cloud-print-connector
-  echo "Initializing connector..."
-  gcp-connector-util init
-fi
-EOT
 
 # Reboot or restart services as required
 # so that upgrades and config changes are applied
