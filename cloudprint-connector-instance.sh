@@ -2,7 +2,7 @@
 
 # make sure we only run once at VM creation
 # additional reboots exit immediately
-if [ -a /root/.startup-script-ran ]
+if [ ! -f /root/.startup-script-ran ]
 then
   echo "startup script already ran once"
   exit 0
@@ -18,7 +18,7 @@ echo 'export GOPATH=$HOME/go' >> /etc/skel/.bashrc
 echo 'export PATH=$PATH:$GOROOT/bin:$GOPATH/bin' >> /etc/skel/.bashrc
 mkdir /etc/skel/go
 cat <<EOT >> /etc/skel/.profile
-if [ -a ~/.first-login-script-ran ]
+if [ \! -f ~/.first-login-script-ran ]
 then
   echo "Installing GoLang GCP 2.0 Connector..."
   go get -v github.com/google/cloud-print-connector/...
