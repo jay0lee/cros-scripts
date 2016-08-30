@@ -21,7 +21,7 @@ cat <<EOT >> /etc/skel/.profile
 if [ \! -f ~/.first-login-script-ran ]
 then
   echo "Installing GoLang GCP 2.0 Connector..."
-  go get -v github.com/google/cloud-print-connector/...
+  go get -v -u -ldflags "-X github.com/google/cups-connector/lib.BuildDate=\`date +%Y.%m.%d\`" github.com/google/cloud-print-connector/...
   echo
   echo "Initializing connector..."
   gcp-connector-util init
