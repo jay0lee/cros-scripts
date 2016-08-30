@@ -2,7 +2,7 @@
 
 # make sure we only run once at VM creation
 # additional reboots exit immediately
-if [ ! -f /root/.startup-script-ran ]
+if [ -f /root/.startup-script-ran ]
 then
   echo "startup script already ran once"
   exit 0
