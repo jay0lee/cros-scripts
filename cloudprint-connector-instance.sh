@@ -11,6 +11,7 @@ else
 fi
 
 metadata_url="http://metadata.google.internal/computeMetadata/v1/instance/attributes/"
+userpass=`curl $metadata_url/userpass -H "Metadata-Flavor: Google"`
 
 # start by making sure all installed packages
 # are up to date.
