@@ -41,12 +41,19 @@ do
   sleep 10
   apt-get update
 done
-
-# Create user gcp
-useradd --password `echo $userpass | mkpasswd -m sha-512 -s` gcp --create-home --skel /etc/skel/ --shell /bin/bash
+cat <<EOT >> /etc/skel/.profile
+if [ `last $USER | wc -l` -lt 2 ]
+then
+  echo "Installing GoLang GCP 2.0 Connector..."
+  go get -v github.com/google/cloud-print-connector
+  echo "Initializing connector..."
+  gcp-connector-util init
+fi
+EOT
 
 # Reboot or restart services as required
 # so that upgrades and config changes are applied
 if [ -a /var/run/reboot-required ]
 then
   reboot
+fi
