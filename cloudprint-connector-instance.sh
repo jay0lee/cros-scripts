@@ -22,6 +22,7 @@ if [ `last $USER | wc -l` -lt 2 ]
 then
   echo "Installing GoLang GCP 2.0 Connector..."
   go get -v github.com/google/cloud-print-connector/...
+  echo
   echo "Initializing connector..."
   gcp-connector-util init
 fi
