@@ -11,6 +11,8 @@ else
 fi
 
 metadata_url="http://metadata.google.internal/computeMetadata/v1/instance/attributes/"
+board=`curl $metadata_url/board -H "Metadata-Flavor: Google"`
+branch=`curl $metadata_url/branch -H "Metadata-Flavor: Google"`
 
 # start by making sure all installed packages
 # are up to date.
@@ -38,24 +40,25 @@ EOF
 chmod +x ./sudo_editor 
 sudo EDITOR=./sudo_editor visudo -f /etc/sudoers.d/relax_requirements
 
+sudo -i -u ubuntu git config --global color.ui false 
 sudo -i -u ubuntu git config --global user.email "jay0lee@gmail.com"
 sudo -i -u ubuntu git config --global user.name "Jay Lee"
 
 sudo -i -u ubuntu git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
 
-echo "export PATH=\`pwd\`/depot_tools:\"\$PATH\"" >> /home/ubuntu/.bashrc
+sudo -i -u ubuntu mkdir -p chromiumos
 
-sudo -i -u ubuntu mkdir -p ${HOME}/chromiumos
+sudo -i -u ubuntu sh -c "cd chromiumos; /home/ubuntu/depot_tools/repo init \
+  -u https://chromium.googlesource.com/chromiumos/manifest.git \
+  --repo-url https://chromium.googlesource.com/external/repo.git -g minilayout -b $branch"
+sudo -i -u ubuntu sh -c "cd chromiumos; /home/ubuntu/depot_tools/repo sync"
 
-sudo -i -u ubuntu "cd chromiumos; repo init -u https://chromium.googlesource.com/chromiumos/manifest.git --repo-url https://chromium.googlesource.com/external/repo.git -g minilayout"
-sudo -i -u ubuntu "cd chromiumos; repo sync"
+sudo -i -u ubuntu sh -c "cd chromiumos; /home/ubuntu/depot_tools/cros_sdk --download"
 
-sudo -i -u ubuntu "cd chromiumos; cros_sdk --download"
+sudo -i -u ubuntu sh -c "cd chromiumos; /home/ubuntu/depot_tools/cros_sdk -- ./setup_board --board=$board --default"
 
-sudo -i -u ubuntu "cd chromiumos; cros_sdk -- ./setup_board --board=link --default"
+sudo -i -u ubuntu sh -c "cd chromiumos; /home/ubuntu/depot_tools/cros_sdk -- ./set_shared_user_password.sh chronos"
 
-sudo -i -u ubuntu "cd chromiumos; cros_sdk -- ./set_shared_user_password.sh chronos"
+sudo -i -u ubuntu sh -c "cd chromiumos; /home/ubuntu/depot_tools/cros_sdk -- ./build_packages"
 
-sudo -i -u ubuntu "cd chromiumos; cros_sdk -- ./build_packages"
-
-sudo -i -u ubuntu "cd chromiumos; cros_sdk -- ./build_image --noenable_rootfs_verification dev"
+sudo -i -u ubuntu sh -c "cd chromiumos; cros_sdk -- ./build_image --noenable_rootfs_verification dev"
