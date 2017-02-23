@@ -13,7 +13,7 @@ fwid=`crossystem fwid`
 hwid=`crossystem hwid`
 now=`date +%Y%m%d-%H%M%S`
 drive_filename="cros-firmware-$fwid-$now.bin"
-mac_address=`/sbin/ifconfig wlan0 | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}'`
+mac_address=`/bin/ifconfig wlan0 | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}'`
 drive_filedescription="Hardware ID: $hwid\nWLAN Mac Address: $mac_address"
 
 client_id='252950668309.apps.googleusercontent.com'
