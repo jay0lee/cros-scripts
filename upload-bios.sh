@@ -1,7 +1,18 @@
+#!/bin/bash
+
+# Upload BIOS - uploads Chrome OS device's firmware to Drive for safe keeping.
+
+# Run this script on a Chromebook:
+# 1. Put Chromebook in developer mode - https://www.chromium.org/chromium-os/poking-around-your-chrome-os-device
+# 2. Log into device. Press CTRL+ALT+T to open crosh shell.
+# 3. Type "shell" to enter Bash shell.
+# 4. Type:
+#      bash <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/upload-bios.sh)
+
 fwid=`crossystem fwid`
 hwid=`crossystem hwid`
 now=`date +%Y%m%d-%H%M%S`
-drive_filename="crpsos-firmware-$fwid-$now.bin"
+drive_filename="cros-firmware-$fwid-$now.bin"
 mac_address=`/sbin/ifconfig wlan0 | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}'`
 drive_filedescription="Hardware ID: $hwid\nWLAN Mac Address: $mac_address"
 
