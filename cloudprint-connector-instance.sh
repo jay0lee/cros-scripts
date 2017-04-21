@@ -51,8 +51,9 @@ do
 done
 
 # Install Go
-curl -O https://storage.googleapis.com/golang/go1.7.linux-amd64.tar.gz
-tar xvf go1.7.linux-amd64.tar.gz
+typeset VER=`curl -s https://golang.org/dl/ | grep -m 1 -o 'go\([0-9]\)\+\(\.[0-9]\)\+'`
+curl -O https://storage.googleapis.com/golang/$VER.linux-amd64.tar.gz
+tar xvf $VER.linux-amd64.tar.gz
 chown -R root:root ./go
 mv go /usr/local
 
