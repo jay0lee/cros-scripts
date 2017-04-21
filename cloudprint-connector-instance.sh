@@ -59,7 +59,7 @@ mv go /usr/local
 
 # Install GAM
 bash <(curl -s -S -L https://git.io/install-gam) -d /usr/local -l
-echo 'alias gam="python /usr/local/gam/gam"' >> /etc/skel/.bashrc
+echo 'alias gam="/usr/local/gam/gam"' >> /etc/skel/.bashrc
 echo '{"installed":{"client_id":"744500012322-l9k71a79e12lnu87ffqohqjl0141f22h.apps.googleusercontent.com","project_id":"jayhlee-gce-instances","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://accounts.google.com/o/oauth2/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"hlocexhhxrHWKO3iCxReaPVi","redirect_uris":["urn:ietf:wg:oauth:2.0:oob","http://localhost"]}}' > /usr/local/gam/client_secrets.json
 touch /usr/local/gam/nobrowser.txt
 chmod a+rwx -R /usr/local/gam
