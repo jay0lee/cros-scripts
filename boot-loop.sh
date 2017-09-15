@@ -6,7 +6,7 @@ STOPSERIAL="idVendor=1050"
 STATEFUL=/mnt/stateful_partition
 PATTERN=DmL2nf8Kt
 
-for ((i=0; i<100; i++)); do
+for ((i=0; i<1000; i++)); do
   PATTERN100="$PATTERN100$PATTERN"
 done
 
