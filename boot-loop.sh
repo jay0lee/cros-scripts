@@ -10,7 +10,7 @@ for ((i=0; i<100; i++)); do
   PATTERN100="$PATTERN100$PATTERN"
 done
 
-PATTERN100MD5=f1adf7c2df0758fc149936ea34b9e8ac
+PATTERN100MD5=d5443cdc04711d0317a2668a080bf659
 
 # serial of my usb key
 if dmesg | grep "$STOPSERIAL"; then
