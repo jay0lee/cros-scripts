@@ -6,7 +6,7 @@ STOPSERIAL="idVendor=1050"
 STATEFUL=/mnt/stateful_partition
 PATTERN=DmL2nf8Kt
 
-for ((i=0; i<1000; i++)); do
+for ((i=0; i<100; i++)); do
   PATTERN100="$PATTERN100$PATTERN"
 done
 
@@ -19,7 +19,7 @@ if dmesg | grep "$STOPSERIAL"; then
 fi
 
 for part in encrypted/test test; do
-  for ((i=0; i<100; i++)); do
+  for ((i=0; i<200; i++)); do
     file="$STATEFUL/$part.$i"
     if md5sum "$file" | grep -v $PATTERN100MD5; then
       stop ui
