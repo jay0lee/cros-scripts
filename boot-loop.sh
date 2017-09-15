@@ -32,4 +32,4 @@ for part in encrypted/test test; do
   done
 done
 
-#reboot
+reboot
