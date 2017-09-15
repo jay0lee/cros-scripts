@@ -26,7 +26,7 @@ for part in encrypted/test test; do
       exit 0
     fi
     rm -f "$file"
-    for ((j=0; j<=i; j++)); do
+    for ((j=0; j<100; j++)); do
       echo $PATTERN100 >> "$file"
     done
   done
