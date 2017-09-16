@@ -16,7 +16,7 @@ PATTERN100MD5=321fe3cb8465a0cc689861379c6c9ae2
 if dmesg | grep "$STOPSERIAL"; then
   stop ui
   # make noise to get attention
-  speaker-test -l 0 -t sine -c 2 -p2000 -P 2
+  speaker-test -l 2 -t sine -c 2 -p2000 -P 2
 fi
 
 for part in encrypted/test test; do
