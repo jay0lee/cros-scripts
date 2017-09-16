@@ -23,7 +23,8 @@ for part in encrypted/test test; do
     file="$STATEFUL/$part.$i"
     if md5sum "$file" | grep -v $PATTERN100MD5; then
       stop ui
-      exit 0
+      # make noise to get attention
+      speaker-test -l 0 -t sine -c 2 -p2000 -P 2
     fi
     rm -f "$file"
     for ((j=0; j<100; j++)); do
