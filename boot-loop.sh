@@ -17,6 +17,7 @@ if dmesg | grep "$STOPSERIAL"; then
   stop ui
   # make noise to get attention
   speaker-test -l 2 -t sine -c 2 -p2000 -P 2
+  exit
 fi
 
 for part in encrypted/test test; do
@@ -26,6 +27,7 @@ for part in encrypted/test test; do
       stop ui
       # make noise to get attention
       speaker-test -l 0 -t sine -c 2 -p2000 -P 2
+      exit
     fi
     rm -f "$file"
     for ((j=0; j<100; j++)); do
