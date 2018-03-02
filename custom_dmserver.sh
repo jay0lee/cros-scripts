@@ -14,7 +14,6 @@ source <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/ma
 
 read -p "Which URL do you wish to use for custom policy?: " policy_url
 url_line="--device-management-url=$policy_url"
-sudo bash -c 'echo "--disable-policy-key-verification" >> /etc/chrome_dev.conf'
 sudo bash -c 'echo "--enterprise-enrollment-skip-robot-auth" >> /etc/chrome_dev.conf'
 sudo bash -c "echo $url_line >> /etc/chrome_dev.conf"
 echo
