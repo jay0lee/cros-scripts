@@ -23,4 +23,4 @@ echo $policy_url
 echo
 echo "Restarting UI in 10 seconds to pull and apply new custom policy"
 sleep 10
-restart ui
+sudo restart ui
