@@ -21,4 +21,6 @@ echo "Switched policy to pull from:"
 echo
 echo $policy_url
 echo
-echo "reboot to pull and apply new custom policy"
+echo "Restarting UI in 10 seconds to pull and apply new custom policy"
+sleep 10
+restart ui
