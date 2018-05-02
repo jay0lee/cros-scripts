@@ -9,6 +9,10 @@
 # 3. Type "shell" to enter Bash shell.
 # 4. Type:
 #      bash <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/remote_devtools.sh)
+# 5. If the device is not already in read-write mode (which it probably isn't) the script will reboot your device.
+# 6. Repeat steps 2-4 (same command) after the reboot.
+# 7. Make sure the device is connected to an open Wifi network that allows peer-to-peer (p2p) connections).
+# 8. Note the IP address of the this device (it may change). You should be able to access the remote devtools at http://<device ip>:9223
 
 # Make SSD read/write if it's not
 source <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/enable_rw_ssd.sh)
