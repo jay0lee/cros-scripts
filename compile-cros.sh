@@ -14,7 +14,7 @@ metadata_url="http://metadata.google.internal/computeMetadata/v1/instance/attrib
 board=`curl $metadata_url/board -H "Metadata-Flavor: Google"`
 branch=`curl $metadata_url/branch -H "Metadata-Flavor: Google"`
 branch_flag=""
-if [[ !  -z  $param  ]]
+if [ ! -z  $branch ]
 then
   branch_flag="-b $branch"
 fi
