@@ -13,6 +13,11 @@ fi
 metadata_url="http://metadata.google.internal/computeMetadata/v1/instance/attributes/"
 board=`curl $metadata_url/board -H "Metadata-Flavor: Google"`
 branch=`curl $metadata_url/branch -H "Metadata-Flavor: Google"`
+branch_flag=""
+[[ !  -z  $param  ]]
+then
+  branch_flag="-b $branch"
+fi
 
 # start by making sure all installed packages
 # are up to date.
@@ -50,7 +55,7 @@ sudo -i -u ubuntu mkdir -p chromiumos
 
 sudo -i -u ubuntu sh -c "cd chromiumos; /home/ubuntu/depot_tools/repo init \
   -u https://chromium.googlesource.com/chromiumos/manifest.git \
-  --repo-url https://chromium.googlesource.com/external/repo.git -g minilayout -b $branch"
+  --repo-url https://chromium.googlesource.com/external/repo.git -g minilayout $branch_flag"
 sudo -i -u ubuntu sh -c "cd chromiumos; /home/ubuntu/depot_tools/repo sync"
 
 sudo -i -u ubuntu sh -c "cd chromiumos; /home/ubuntu/depot_tools/cros_sdk --download"
