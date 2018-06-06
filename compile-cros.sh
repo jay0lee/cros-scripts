@@ -13,8 +13,12 @@ fi
 useradd -m cros
 
 metadata_url="http://metadata.google.internal/computeMetadata/v1/instance/attributes/"
-board=`curl $metadata_url/board -H "Metadata-Flavor: Google"`
-branch=`curl $metadata_url/branch -H "Metadata-Flavor: Google"`
+board=`curl --fail $metadata_url/board -H "Metadata-Flavor: Google"`
+if [ -z $board ]
+then
+  board="caroline"
+fi
+branch=`curl --fail $metadata_url/branch -H "Metadata-Flavor: Google"`
 branch_flag=""
 if [ ! -z  $branch ]
 then
