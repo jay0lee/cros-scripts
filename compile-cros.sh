@@ -66,7 +66,7 @@ sudo -i -u cros bash << EOF
     -u https://chromium.googlesource.com/chromiumos/manifest.git \
     --repo-url https://chromium.googlesource.com/external/repo.git $branch_flag
   echo "repo sync..."
-  /home/cros/depot_tools/repo sync
+  /home/cros/depot_tools/repo sync -j8
   echo "cros_sdk --download..."
   /home/cros/depot_tools/cros_sdk --download
   echo "setup_board..."
