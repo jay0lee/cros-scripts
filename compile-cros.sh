@@ -56,11 +56,11 @@ sudo -i -u cros bash << EOF
   cd ~/chromiumos
   /home/cros/depot_tools/repo init \
     -u https://chromium.googlesource.com/chromiumos/manifest.git \
-    --repo-url https://chromium.googlesource.com/external/repo.git -g minilayout $branch_flag
+    --repo-url https://chromium.googlesource.com/external/repo.git $branch_flag
   /home/cros/depot_tools/repo sync
   /home/cros/depot_tools/cros_sdk --download
   /home/cros/depot_tools/cros_sdk -- ./setup_board --board=$board --default
   /home/cros/depot_tools/cros_sdk -- ./set_shared_user_password.sh chronos
-  /home/cros/depot_tools/cros_sdk -- ./build_packages
-  /home/cros/depot_tools/cros_sdk -- ./build_image --noenable_rootfs_verification dev
+  /home/cros/depot_tools/cros_sdk -- ./build_packages --nowithdebug
+  /home/cros/depot_tools/cros_sdk -- ./build_image base
 EOF
