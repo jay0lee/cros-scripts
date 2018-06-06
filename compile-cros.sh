@@ -76,5 +76,5 @@ sudo -i -u cros bash << EOF
   echo "build_packages..."
   /home/cros/depot_tools/cros_sdk -- ./build_packages --nowithdebug
   echo "build_image..."
-  /home/cros/depot_tools/cros_sdk -- ./build_image base
+  /home/cros/depot_tools/cros_sdk -- ./build_image dev
 EOF
