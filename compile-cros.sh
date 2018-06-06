@@ -52,7 +52,8 @@ sudo -i -u cros bash << EOF
   git config --global user.email "jay0lee@gmail.com"
   git config --global user.name "Jay Lee"
   git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
-  mkdir -p chromiumos
+  mkdir -p ~/chromiumos
+  cd ~/chromiumos
   /home/cros/depot_tools/repo init \
     -u https://chromium.googlesource.com/chromiumos/manifest.git \
     --repo-url https://chromium.googlesource.com/external/repo.git -g minilayout $branch_flag
