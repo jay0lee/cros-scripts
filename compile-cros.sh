@@ -11,6 +11,7 @@ else
 fi
 
 useradd -m cros
+adduser cros google-sudoers
 
 metadata_url="http://metadata.google.internal/computeMetadata/v1/instance/attributes/"
 board=`curl --fail $metadata_url/board -H "Metadata-Flavor: Google"`
@@ -28,28 +29,28 @@ fi
 # start by making sure all installed packages
 # are up to date.
 export DEBIAN_FRONTEND=noninteractive
-apt-get update
-#apt-get -y dist-upgrade
+apt update
+apt -y upgrade
 
 # install the packages we need. For some reason it
 # fails every now and again so loop until success
 packages="git-core gitk git-gui curl lvm2 thin-provisioning-tools python-pkg-resources python-virtualenv python-oauth2client"
 echo "installing $packages"
-until apt-get -y install $packages
+until apt -y install $packages
 do
   echo "failed to install packages, sleeping and trying again"
   sleep 10
-  apt-get update
+  apt update
 done
 
-cd /tmp
-cat > ./sudo_editor <<EOF
-#!/bin/sh
-echo Defaults \!tty_tickets > \$1          # Entering your password in one shell affects all shells 
-echo Defaults timestamp_timeout=180 >> \$1 # Time between re-requesting your password, in minutes
-EOF
-chmod +x ./sudo_editor 
-sudo EDITOR=./sudo_editor visudo -f /etc/sudoers.d/relax_requirements
+#cd /tmp
+#cat > ./sudo_editor <<EOF
+##!/bin/sh
+#echo Defaults \!tty_tickets > \$1          # Entering your password in one shell affects all shells 
+#echo Defaults timestamp_timeout=180 >> \$1 # Time between re-requesting your password, in minutes
+#EOF
+#chmod +x ./sudo_editor 
+#sudo EDITOR=./sudo_editor visudo -f /etc/sudoers.d/relax_requirements
 
 sudo -i -u cros bash << EOF
   echo "setting git defaults..."
