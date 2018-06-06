@@ -52,19 +52,28 @@ chmod +x ./sudo_editor
 sudo EDITOR=./sudo_editor visudo -f /etc/sudoers.d/relax_requirements
 
 sudo -i -u cros bash << EOF
+  echo "setting git defaults..."
   git config --global color.ui false 
   git config --global user.email "jay0lee@gmail.com"
   git config --global user.name "Jay Lee"
+  echo "cloning depot_tools..."
   git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
   mkdir -p ~/chromiumos
   cd ~/chromiumos
+  echo "repo init..."
   /home/cros/depot_tools/repo init \
     -u https://chromium.googlesource.com/chromiumos/manifest.git \
     --repo-url https://chromium.googlesource.com/external/repo.git $branch_flag
+  echo "repo sync..."
   /home/cros/depot_tools/repo sync
+  echo "cros_sdk --download..."
   /home/cros/depot_tools/cros_sdk --download
+  echo "setup_board..."
   /home/cros/depot_tools/cros_sdk -- ./setup_board --board=$board --default
+  echo "set_shared_user_password..."
   /home/cros/depot_tools/cros_sdk -- ./set_shared_user_password.sh chronos
+  echo "build_packages..."
   /home/cros/depot_tools/cros_sdk -- ./build_packages --nowithdebug
+  echo "build_image..."
   /home/cros/depot_tools/cros_sdk -- ./build_image base
 EOF
