@@ -27,7 +27,7 @@ apt-get update
 
 # install the packages we need. For some reason it
 # fails every now and again so loop until success
-packages="git-core gitk git-gui subversion curl"
+packages="git-core gitk git-gui curl lvm2 thin-provisioning-tools python-pkg-resources python-virtualenv python-oauth2client"
 echo "installing $packages"
 until apt-get -y install $packages
 do
