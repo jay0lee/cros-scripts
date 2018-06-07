@@ -69,7 +69,7 @@ sudo -i -u cros bash << EOF
   echo "BUILDSCRIPT: set_shared_user_password..."
   /home/cros/depot_tools/cros_sdk -- ./set_shared_user_password.sh chronos
   echo "BUILDSCRIPT: build_packages..."
-  /home/cros/depot_tools/cros_sdk -- ./build_packages --nowithdebug
+  /home/cros/depot_tools/cros_sdk -- ./build_packages
   echo "BUILDSCRIPT: build_image..."
   /home/cros/depot_tools/cros_sdk -- ./build_image --noenable_rootfs_verification dev
 EOF
