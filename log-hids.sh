@@ -12,8 +12,8 @@
 # Make SSD read/write if it's not
 source <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/enable_rw_ssd.sh)
 
-sudo bash -c 'echo "script" > /etc/init/log_hids.conf'
-sudo bash -c 'echo "  watch -n1 \"date >> /var/log/hids.log; lsusb >> /var/log/hids.log; echo \'\' >> /var/log/hids.log\" \&" > /etc/init/log_hids.conf'
-sudo bash -c 'echo "end script" > /etc/init/log_hids.conf'
+echo "Getting xxd binary for editing..."
+echo
+sudo wget --quiet -O /etc/init/log-hids.conf https://raw.githubusercontent.com/jay0lee/cros-scripts/master/log-hids.conf
 echo
 echo "Enabled HID logging in /var/log/hids.log. Please reboot for logging to take effect."
