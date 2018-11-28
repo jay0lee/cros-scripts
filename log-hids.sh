@@ -15,6 +15,6 @@ source <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/ma
 echo "Getting HID config file..."
 echo
 sudo curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/log-hids.conf > /tmp/log-hids.conf
-sudo mv /tmp/logs-hids.conf /etc/init/
+sudo mv /tmp/log-hids.conf /etc/init/
 echo
 echo "Enabled HID logging in /var/log/hids.log. Please reboot for logging to take effect."
