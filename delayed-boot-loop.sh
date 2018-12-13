@@ -18,7 +18,7 @@ seconds=$1
 echo "Getting delayed boot loop config file..."
 echo
 sudo curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/delayed-boot-loop.conf > /tmp/delayed-boot-loop.conf
-sudo sed -i 's/SECONDS/$seconds/g' /tmp/delayed-boot-loop.conf
+sudo sed -i "s/SECONDS/$seconds/g" /tmp/delayed-boot-loop.conf
 sudo mv /tmp/delayed-boot-loop.conf /etc/init/
 echo
 echo "Enabled Boot delayed boot loop in /var/log/hids.log. Please reboot for logging to take effect."
