@@ -10,8 +10,8 @@
 #      bash <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/channel-jumper.sh)
 
 get_val_from_file() {
-  val=$1
-  filename=$2
+  val=$2
+  filename=$1
   return `cat $filename | grep $val | awk -F= '{print $2}'`
 }
 
