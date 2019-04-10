@@ -15,7 +15,7 @@ get_val_from_file() {
   return `cat $filename | grep $val | awk -F= '{print $2}'`
 
 os_version=$( get_val_from_file /etc/lsb-release CHROMEOS_RELEASE_VERSION )
-browser_version$( get_val_from_file /etc/lsb-release CHROMEOS_RELEASE_CHROME_MILESTONE )
+browser_version=$( get_val_from_file /etc/lsb-release CHROMEOS_RELEASE_CHROME_MILESTONE )
 track=$( get_val_from_file /etc/lsb-release CHROMEOS_RELEASE_TRACK )
 echo -e "You are running:\n Chrome OS $os_version\n Browser   $browser_version\nChannel:   $track\n\n"
 new_track=$( get_val_from_file /mnt/stateful/etc/lsb-release CHROMEOS_RELEASE_TRACK )
