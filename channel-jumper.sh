@@ -18,6 +18,19 @@ get_val_from_file() {
 os_version=$( get_val_from_file /etc/lsb-release CHROMEOS_RELEASE_VERSION )
 browser_version=$( get_val_from_file /etc/lsb-release CHROMEOS_RELEASE_CHROME_MILESTONE )
 track=$( get_val_from_file /etc/lsb-release CHROMEOS_RELEASE_TRACK )
-echo -e "You are running:\n Chrome OS $os_version\n Browser   $browser_version\nChannel:   $track\n\n"
-new_track=$( get_val_from_file /mnt/stateful/etc/lsb-release CHROMEOS_RELEASE_TRACK )
-echo -e "Devices is configured to update on $new_track"
+echo -e "You are running:\n Chrome OS $os_version\n Browser $browser_version\nChannel $track\n\n"
+
+
+while true; do
+  read -p "Which channel do you wish to use switch to (stable, beta, dev or canary)?: " new_channel
+  case $new_channel in
+    stable|beta|dev|dev|canary)
+      break
+      ;;
+    *)
+      echo "Please enter stable, beta, dev or canary."
+      ;;
+  esac
+done
+
+echo
