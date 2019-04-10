@@ -9,7 +9,14 @@
 # 4. Type:
 #      bash <(curl -s -S -L https://raw.githubusercontent.com/jay0lee/cros-scripts/master/channel-jumper.sh)
 
-source /etc/lsb-release
-echo -e "You are running:\n Chrome OS $CHROMEOS_RELEASE_VERSION\n Browser   $CHROMEOS_RELEASE_CHROME_MILESTONE\nChannel:   $CHROMEOS_RELEASE_TRACK\n\n"
-source /mnt/stateful/etc/lsb-release
-echo -e "Devices is configured to update on $CHROMEOS_RELEASE_TRACK"
+get_val_from_file() {
+  val=$1
+  filename=$2
+  return `cat $filename | grep $val | awk -F= '{print $2}'`
+
+os_version=$( get_val_from_file /etc/lsb-release CHROMEOS_RELEASE_VERSION )
+browser_version$( get_val_from_file /etc/lsb-release CHROMEOS_RELEASE_CHROME_MILESTONE )
+track=$( get_val_from_file /etc/lsb-release CHROMEOS_RELEASE_TRACK )
+echo -e "You are running:\n Chrome OS $os_version\n Browser   $browser_version\nChannel:   $track\n\n"
+new_track=$( get_val_from_file /mnt/stateful/etc/lsb-release CHROMEOS_RELEASE_TRACK )
+echo -e "Devices is configured to update on $new_track"
