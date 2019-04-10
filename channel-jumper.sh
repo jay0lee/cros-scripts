@@ -12,7 +12,7 @@
 get_val_from_file() {
   val=$2
   filename=$1
-  return `cat $filename | grep $val | awk -F= '{print $2}'`
+  echo `cat $filename | grep $val | awk -F= '{print $2}'`
 }
 
 os_version=$( get_val_from_file /etc/lsb-release CHROMEOS_RELEASE_VERSION )
