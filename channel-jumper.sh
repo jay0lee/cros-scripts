@@ -18,7 +18,7 @@ get_val_from_file() {
 os_version=$( get_val_from_file /etc/lsb-release CHROMEOS_RELEASE_VERSION )
 browser_version=$( get_val_from_file /etc/lsb-release CHROMEOS_RELEASE_CHROME_MILESTONE )
 track=$( get_val_from_file /etc/lsb-release CHROMEOS_RELEASE_TRACK )
-echo -e "You are running:\n Chrome OS $os_version\n Browser $browser_version\nChannel $track\n\n"
+echo -e "You are running:\n Chrome OS $os_version\n Browser $browser_version\n Channel $track\n\n"
 
 
 while true; do
@@ -32,5 +32,10 @@ while true; do
       ;;
   esac
 done
+new_channel="$new_channel-channel"
 
-echo
+sudo mkdir -p /mnt/stateful_partition/etc
+
+echo -e "CHROMEOS_RELEASE_VERSION=100.0.0" > /tmp/lsb-release
+sudo cp /tmp/lsb-release /mnt/stateful_partition/etc/
+update_engine_client --channel=$new_channel
